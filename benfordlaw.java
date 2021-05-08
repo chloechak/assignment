@@ -16,6 +16,7 @@ class benfordlaw {
        // The file to be read by scanner
        File file = new File("/Users/lakysha/Downloads/sales.csv");
        Scanner sc = new Scanner(file);
+       //new change by lakysha
     }
     
 }
