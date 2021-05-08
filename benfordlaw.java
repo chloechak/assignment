@@ -22,11 +22,15 @@ public class benfordlaw extends Application{
         while (scan.hasNext()) {
             //read the next digit but convert the 4th character into an int 
             int nextNum = Character.getNumericValue(scan.next().charAt(4));       
-            int digit = Digit(nextNum);   
+             
              //add a counter so it counts the number of times a number appears
             appearingNum++;
             // this counter will update the frequency of a number in its array  
-            countArray[digit]++;      
+            for(int a=1; a<10; a++){
+                if(a==nextNum){
+                countArray[a]++;  
+              }
+              }    
                  
         }
         //display the method that contains the final percentages
@@ -43,12 +47,7 @@ public class benfordlaw extends Application{
           
      }
     }
-       public static int Digit(int num) {
-         while (num > 9) {
-            num = num / 10;
-          }
-        return num;
-    }
+     
     @Override
     public void start(Stage stage) throws Exception {
         String one = "1";
