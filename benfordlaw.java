@@ -12,12 +12,14 @@ import java.util.Scanner;
  * benfordlaw
  */
 class benfordlaw {
-    public static void main(String[] args) throws Exception{
-        int i=0;
-        int t=0;
-       // The file to be read by scanner
-       File file = new File("/Users/lakysha/Downloads/sales.csv");
-       Scanner sc = new Scanner(file);
+    public static void main(String[] args)  throws FileNotFoundException {
+            // Scanner reader = new Scanner(System.in);
+            //this scanner is names scan and it stores the csv file required for the benford calculation
+             Scanner scan = new Scanner(new File("sales.csv"));
+             //this array stores the numbers from 1-9 (10 numbers)
+             int[] countArray = new int[10];     
+              //initialize the counter
+             int appearingNum = 0; 
     }
     
 }
