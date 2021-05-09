@@ -35,22 +35,24 @@ public class testing2 extends Application{
                     countArray[a]++;  
                 }
             }    
-                 
         }
         //display the method that contains the final percentages
         finalPercent(countArray,appearingNum); 
     }
-
-    public static void finalPercent(double [] countArray, int appearingNum) {
+    public void finalPercent(double [] countArray, int appearingNum) {
         // this for loop will print out the frequency of every number from 1-9
-       for (int i = 1; i<=9; i++){
-            double percent = countArray[i] * 100.0 / appearingNum;
-            System.out.println(i+"- "+percent);
+        for (int i = 1; i<=9; i++){
+            countArray[i] = countArray[i] * 100.0 / appearingNum;
+            System.out.println(i+"- "+countArray[i]);
+            countArray[i] = Math.round((countArray[i]*10)/10.0);
+            System.out.println(i+"- "+countArray[i]);
+
         }
     }
-     
-    @Override
+    
+    
     public void start(Stage stage) throws Exception {
+        
         Parameters parameters = getParameters();
         String one = "1";
         String two = "2";
@@ -72,15 +74,15 @@ public class testing2 extends Application{
 
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("digit frequency");       
-        series1.getData().add(new XYChart.Data(one, 3));
-        series1.getData().add(new XYChart.Data(two, 4));
+        series1.getData().add(new XYChart.Data(one,2));
+        series1.getData().add(new XYChart.Data(two,4));
         series1.getData().add(new XYChart.Data(three,6));
         series1.getData().add(new XYChart.Data(four,8));
-        series1.getData().add(new XYChart.Data(five, 10));
-        series1.getData().add(new XYChart.Data(six, 9));
-        series1.getData().add(new XYChart.Data(seven, 5));
-        series1.getData().add(new XYChart.Data(eight, 3));
-        series1.getData().add(new XYChart.Data(nine, 6));
+        series1.getData().add(new XYChart.Data(five,10));
+        series1.getData().add(new XYChart.Data(six,9));
+        series1.getData().add(new XYChart.Data(seven,5));
+        series1.getData().add(new XYChart.Data(eight,3));
+        series1.getData().add(new XYChart.Data(nine,6));
 
         Scene scene  = new Scene(bc,800,600);
         bc.getData().addAll(series1);
