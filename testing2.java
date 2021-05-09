@@ -10,12 +10,16 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 
 public class testing2 extends Application{ 
-    public static void main(String[] args) throws FileNotFoundException { 
+    public static void main(String[] args) {
+        launch(args);
+    }
+    @Override 
+    public void init() throws FileNotFoundException { 
        // Scanner reader = new Scanner(System.in);
        //this scanner is names scan and it stores the csv file required for the benford calculation
         Scanner scan = new Scanner(new File("sales (2).csv"));
         //this array stores the numbers from 1-9 (10 numbers)
-        int[] countArray = new int[10];     
+        double[] countArray = new double[10];     
         //initialize the counter of the numbers appearing
         int appearingNum = 0; 
         //while the file has next perform the tasks 
@@ -35,21 +39,19 @@ public class testing2 extends Application{
         }
         //display the method that contains the final percentages
         finalPercent(countArray,appearingNum); 
-        launch(args);
-   
-   
     }
-    public static void finalPercent(int [] countArray, int appearingNum) {
+
+    public static void finalPercent(double [] countArray, int appearingNum) {
         // this for loop will print out the frequency of every number from 1-9
        for (int i = 1; i<=9; i++){
             double percent = countArray[i] * 100.0 / appearingNum;
             System.out.println(i+"- "+percent);
-          
         }
     }
      
     @Override
     public void start(Stage stage) throws Exception {
+        Parameters parameters = getParameters();
         String one = "1";
         String two = "2";
         String three = "3";
