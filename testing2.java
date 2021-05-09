@@ -40,12 +40,12 @@ public class testing2 extends Application{
    
     }
     public static void finalPercent(int [] countArray, int appearingNum) {
-             // this for loop will print out the frequency of every number from 1-9
+        // this for loop will print out the frequency of every number from 1-9
        for (int i = 1; i<=9; i++){
             double percent = countArray[i] * 100.0 / appearingNum;
             System.out.println(i+"- "+percent);
           
-     }
+        }
     }
      
     @Override
