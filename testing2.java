@@ -11,7 +11,15 @@ import javafx.stage.Stage;
 
 public class testing2 extends Application{ 
     double[] countArray = new double[10];     
-
+    String one = "1";
+    String two = "2";
+    String three = "3";
+    String four = "4";
+    String five = "5";
+    String six = "6";
+    String seven = "7";
+    String eight = "8";
+    String nine = "9";
     public static void main(String[] args) {
         launch(args);
     }
@@ -56,16 +64,6 @@ public class testing2 extends Application{
     
     public void start(Stage stage) throws Exception {
         
-        Parameters parameters = getParameters();
-        String one = "1";
-        String two = "2";
-        String three = "3";
-        String four = "4";
-        String five = "5";
-        String six = "6";
-        String seven = "7";
-        String eight = "8";
-        String nine = "9";
         stage.setTitle("bar graph");
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
