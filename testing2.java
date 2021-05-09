@@ -53,7 +53,7 @@ public class testing2 extends Application{
         // this for loop will print out the frequency of every number from 1-9
         for (int i = 1; i<=9; i++){
             countArray[i] = countArray[i] * 100.0 / appearingNum;
-            System.out.println(i+"- "+countArray[i]);
+            System.out.printf("%d: %6.1f%%\n",i,countArray[i]);
             //double x = Math.round((countArray[i]*1000)/1000.0);
             //System.out.println(i+"- "+ x);
 
