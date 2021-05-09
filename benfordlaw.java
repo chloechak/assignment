@@ -34,10 +34,20 @@ public class benfordlaw extends Application{
                  
         }
         //display the method that contains the final percentages
+        loadSalesData();
         finalPercent(countArray,appearingNum); 
         launch(args);
    
    
+    }
+    public static void loadSalesData() {
+        Scanner reader = new Scanner(System.in); 
+        System.out.println("Would you like to read the file");
+        String answer=reader.nextLine();
+        String location = "/Users/lakysha/Downloads/sales.csv";
+        if(answer.equals("yes")){
+            System.out.println("The file is located in " + location);
+        }
     }
     public static void finalPercent(int [] countArray, int appearingNum) {
              // this for loop will print out the frequency of every number from 1-9
