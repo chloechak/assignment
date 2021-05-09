@@ -27,6 +27,11 @@ public class testing2 extends Application{
     }
     @Override 
     public void init() throws FileNotFoundException { 
+        Scanner reader = new Scanner(System.in);
+        System.out.println("would you like to read file or check for fraud");
+        int option = reader.nextInt();
+
+        
        // Scanner reader = new Scanner(System.in);
        //this scanner is names scan and it stores the csv file required for the benford calculation
         Scanner scan = new Scanner(new File("sales (2).csv"));
@@ -49,8 +54,17 @@ public class testing2 extends Application{
             }    
         }
         //display the method that contains the final percentages
-        finalPercent(countArray,appearingNum); 
-        Results(countArray);
+        do {
+            readFile ()
+        }
+        while (option == 1);
+        do {
+            finalPercent(countArray,appearingNum); 
+            Results(countArray);
+            
+        }
+        
+        while (option == 2);
     }
     public static void finalPercent(double [] countArray, double appearingNum) {
         // this for loop will print out the frequency of every number from 1-9
