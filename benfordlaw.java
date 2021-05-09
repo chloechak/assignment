@@ -43,9 +43,8 @@ public class benfordlaw extends Application{
              // this for loop will print out the frequency of every number from 1-9
        for (int i = 1; i<=9; i++){
             double percent = countArray[i] * 100.0 / appearingNum;
-            System.out.printf("%d: %6.1f%%\n",i,percent);
-          
-     }
+            
+        }
     }
      
     @Override
@@ -86,4 +85,3 @@ public class benfordlaw extends Application{
         stage.show();        
     }
 }
-//random test
