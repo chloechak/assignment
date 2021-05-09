@@ -56,9 +56,10 @@ public class testing2 extends Application{
         // this for loop will print out the frequency of every number from 1-9
         for (int i = 1; i<=9; i++){
             countArray[i] = countArray[i] * 100.0 / appearingNum;
-            System.out.printf("%d: %6.1f%%\n",i,countArray[i]);
-            //double x = Math.round((countArray[i]*1000)/1000.0);
-            //System.out.println(i+"- "+ x);
+            //System.out.printf("%d: %6.1f%%\n",i,countArray[i]);
+            countArray[i]
+            //countArray[i] = Math.round((countArray[i]*100)/100.0);
+            System.out.println(countArray[i]);
 
         }
         return;
@@ -95,7 +96,6 @@ public class testing2 extends Application{
     }
 
     public static void Results (double [] countArray) {
-        Scanner reader = new Scanner(System.in);
         try {
             
             FileWriter outFile = new FileWriter ("results.csv", true);
