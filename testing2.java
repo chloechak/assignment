@@ -54,10 +54,16 @@ public class testing2 extends Application{
             }    
         }
         //display the method that contains the final percentages
-        do {
-            readFile ()
+        if (option == 1) {
+            loadSalesData();
+            return;
         }
-        while (option == 1);
+        // do {
+        //     loadSalesData();
+        //     break;
+        // }
+        // while (option == 1);
+
         do {
             finalPercent(countArray,appearingNum); 
             Results(countArray);
@@ -66,12 +72,21 @@ public class testing2 extends Application{
         
         while (option == 2);
     }
+    public static void loadSalesData() {
+        Scanner reader = new Scanner(System.in); 
+        System.out.println("Would you like to read the file");
+        String answer=reader.nextLine();
+        String location = "/Users/lakysha/Downloads/sales.csv";
+        if(answer.equals("yes")){
+            System.out.println("The file is located in " + location);
+        }
+    }
     public static void finalPercent(double [] countArray, double appearingNum) {
         // this for loop will print out the frequency of every number from 1-9
         for (int i = 1; i<=9; i++){
             countArray[i] = countArray[i] * 100.0 / appearingNum;
             //System.out.printf("%d: %6.1f%%\n",i,countArray[i]);
-            countArray[i]
+            //countArray[i]
             //countArray[i] = Math.round((countArray[i]*100)/100.0);
             System.out.println(countArray[i]);
 
