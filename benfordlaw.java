@@ -86,3 +86,4 @@ public class benfordlaw extends Application{
         stage.show();        
     }
 }
+//random test
