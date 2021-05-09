@@ -78,14 +78,14 @@ public class testing2 extends Application{
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("digit frequency");       
         series1.getData().add(new XYChart.Data(one,countArray[1]));
-        series1.getData().add(new XYChart.Data(two,countArray[2])));
-        series1.getData().add(new XYChart.Data(three,countArray[3])));
-        series1.getData().add(new XYChart.Data(four,countArray[4])));
-        series1.getData().add(new XYChart.Data(five,countArray[5])));
-        series1.getData().add(new XYChart.Data(six,countArray[6])));
-        series1.getData().add(new XYChart.Data(seven,countArray[7])));
-        series1.getData().add(new XYChart.Data(eight,countArray[8])));
-        series1.getData().add(new XYChart.Data(nine,countArray[9])));
+        series1.getData().add(new XYChart.Data(two,countArray[2]));
+        series1.getData().add(new XYChart.Data(three,countArray[3]));
+        series1.getData().add(new XYChart.Data(four,countArray[4]));
+        series1.getData().add(new XYChart.Data(five,countArray[5]));
+        series1.getData().add(new XYChart.Data(six,countArray[6]));
+        series1.getData().add(new XYChart.Data(seven,countArray[7]));
+        series1.getData().add(new XYChart.Data(eight,countArray[8]));
+        series1.getData().add(new XYChart.Data(nine,countArray[9]));
 
         Scene scene  = new Scene(bc,800,600);
         bc.getData().addAll(series1);
