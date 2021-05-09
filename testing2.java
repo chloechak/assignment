@@ -8,6 +8,8 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 
 public class testing2 extends Application{ 
     double[] countArray = new double[10];     
@@ -48,8 +50,9 @@ public class testing2 extends Application{
         }
         //display the method that contains the final percentages
         finalPercent(countArray,appearingNum); 
+        Results(countArray);
     }
-    public void finalPercent(double [] countArray, double appearingNum) {
+    public static void finalPercent(double [] countArray, double appearingNum) {
         // this for loop will print out the frequency of every number from 1-9
         for (int i = 1; i<=9; i++){
             countArray[i] = countArray[i] * 100.0 / appearingNum;
@@ -89,5 +92,31 @@ public class testing2 extends Application{
         bc.getData().addAll(series1);
         stage.setScene(scene);
         stage.show();        
+    }
+
+    public static void Results (double [] countArray) {
+        Scanner reader = new Scanner(System.in);
+        try {
+            
+            FileWriter outFile = new FileWriter ("results.csv", true);
+            PrintWriter out = new PrintWriter(outFile);
+
+            // Puts customer's ID number, first name, last name, city, postal code and credit card number into the file 
+            for (int i = 1; i<10;i++) {
+                out.println(i + "=" + countArray[i]);
+            }
+            out.flush();
+            
+            System.out.println("Done");
+            
+            // closes the PrintWriter
+            out.close(); 
+        } 
+
+        // Prints if an error has occured
+        catch (Exception E) {
+            System.out.println("error");
+     
+        }
     }
 }
