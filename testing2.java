@@ -22,14 +22,16 @@ public class testing2 extends Application{
     String seven = "7";
     String eight = "8";
     String nine = "9";
+    int option = 0;
     public static void main(String[] args) {
         launch(args);
+        
     }
     @Override 
     public void init() throws FileNotFoundException { 
         Scanner reader = new Scanner(System.in);
-        System.out.println("would you like to read file or check for fraud");
-        int option = reader.nextInt();
+        System.out.println("would you like to read file (1) or check for fraud(2)");
+        option = reader.nextInt();
 
         
        // Scanner reader = new Scanner(System.in);
@@ -56,21 +58,11 @@ public class testing2 extends Application{
         //display the method that contains the final percentages
         if (option == 1) {
             loadSalesData();
-            return;
         }
-        // do {
-        //     loadSalesData();
-        //     break;
-        // }
-        // while (option == 1);
-
-        do {
+        if (option == 2) {
             finalPercent(countArray,appearingNum); 
             Results(countArray);
-            
         }
-        
-        while (option == 2);
     }
     public static void loadSalesData() {
         Scanner reader = new Scanner(System.in); 
@@ -85,43 +77,48 @@ public class testing2 extends Application{
         // this for loop will print out the frequency of every number from 1-9
         for (int i = 1; i<=9; i++){
             countArray[i] = countArray[i] * 100.0 / appearingNum;
-            //System.out.printf("%d: %6.1f%%\n",i,countArray[i]);
-            //countArray[i]
-            //countArray[i] = Math.round((countArray[i]*100)/100.0);
+            int scale = (int) Math.pow(10, 1);
+            countArray[i]=(double) Math.round(countArray[i]* scale) / scale;
             System.out.println(countArray[i]);
-
         }
-        return;
+        if(29<countArray[1]&&countArray[1]<32){
+            System.out.println("Fraud did not occur");
+        }
+        else{
+            System.out.println("Fraud did occur");
+        }
     }
     
     
     public void start(Stage stage) throws Exception {
-        
-        stage.setTitle("bar graph");
-        final CategoryAxis xAxis = new CategoryAxis();
-        final NumberAxis yAxis = new NumberAxis();
-        final BarChart<String,Number> bc = 
-        new BarChart<String,Number>(xAxis,yAxis);
-        bc.setTitle("Benford's Law Distribution First Digit");
-        xAxis.setLabel("digit");       
-        yAxis.setLabel("percent");
+        System.out.println(option);
+        if (option == 2) {
+            stage.setTitle("bar graph");
+            final CategoryAxis xAxis = new CategoryAxis();
+            final NumberAxis yAxis = new NumberAxis();
+            final BarChart<String,Number> bc = 
+            new BarChart<String,Number>(xAxis,yAxis);
+            bc.setTitle("Benford's Law Distribution First Digit");
+            xAxis.setLabel("digit");       
+            yAxis.setLabel("percent");
 
-        XYChart.Series series1 = new XYChart.Series();
-        series1.setName("digit frequency");       
-        series1.getData().add(new XYChart.Data(one,countArray[1]));
-        series1.getData().add(new XYChart.Data(two,countArray[2]));
-        series1.getData().add(new XYChart.Data(three,countArray[3]));
-        series1.getData().add(new XYChart.Data(four,countArray[4]));
-        series1.getData().add(new XYChart.Data(five,countArray[5]));
-        series1.getData().add(new XYChart.Data(six,countArray[6]));
-        series1.getData().add(new XYChart.Data(seven,countArray[7]));
-        series1.getData().add(new XYChart.Data(eight,countArray[8]));
-        series1.getData().add(new XYChart.Data(nine,countArray[9]));
+            XYChart.Series series1 = new XYChart.Series();
+            series1.setName("digit frequency");       
+            series1.getData().add(new XYChart.Data(one,countArray[1]));
+            series1.getData().add(new XYChart.Data(two,countArray[2]));
+            series1.getData().add(new XYChart.Data(three,countArray[3]));
+            series1.getData().add(new XYChart.Data(four,countArray[4]));
+            series1.getData().add(new XYChart.Data(five,countArray[5]));
+            series1.getData().add(new XYChart.Data(six,countArray[6]));
+            series1.getData().add(new XYChart.Data(seven,countArray[7]));
+            series1.getData().add(new XYChart.Data(eight,countArray[8]));
+            series1.getData().add(new XYChart.Data(nine,countArray[9]));
 
-        Scene scene  = new Scene(bc,800,600);
-        bc.getData().addAll(series1);
-        stage.setScene(scene);
-        stage.show();        
+            Scene scene  = new Scene(bc,800,600);
+            bc.getData().addAll(series1);
+            stage.setScene(scene);
+            stage.show();  
+        }      
     }
 
     public static void Results (double [] countArray) {
