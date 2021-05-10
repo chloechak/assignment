@@ -12,6 +12,7 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 public class testing2 extends Application{ 
+    //create the array with 10 indexes for 9 digits 
     double[] countArray = new double[10];     
     String one = "1";
     String two = "2";
@@ -29,6 +30,7 @@ public class testing2 extends Application{
     }
     @Override 
     public void init() throws FileNotFoundException { 
+        //scanner will allow the user to input 
         Scanner reader = new Scanner(System.in);
         System.out.println("would you like to check the fraud?");
         option = reader.nextLine();
@@ -68,6 +70,29 @@ public class testing2 extends Application{
         System.out.println("Which file would you like to read?");
         String location =reader.nextLine();
         File file = new File(location);
+    }
+    public static void checkFraud(double [] countArray){
+        // Scanner reader = new Scanner(System.in);
+       //this scanner is names scan and it stores the csv file required for the benford calculation
+       Scanner scan = new Scanner(new File("sales (2).csv"));
+       //this array stores the numbers from 1-9 (10 numbers)
+       //double[] countArray = new double[10];     
+       //initialize the counter of the numbers appearing
+       double appearingNum = 0.0; 
+       //while the file has next perform the tasks 
+       while (scan.hasNext()) {
+           //read the next digit but convert the 4th character into an int 
+           int nextNum = Character.getNumericValue(scan.next().charAt(4));       
+            
+            //add a counter so it counts the number of times a number appears
+           appearingNum++;
+           // this counter will update the frequency of a number in its array  
+           for(int a=1; a<10; a++){
+               if(a==nextNum){
+                   countArray[a]++;  
+               }
+           }    
+       }   
     }
     
     public static void finalPercent(double [] countArray, double appearingNum) {
