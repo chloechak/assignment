@@ -24,6 +24,8 @@ public class testing2 extends Application{
     String eight = "8";
     String nine = "9";
     String option = "";
+    static double appearingNum = 0.0; 
+
     public static void main(String[] args) {
         launch(args);
         
@@ -34,7 +36,10 @@ public class testing2 extends Application{
         Scanner reader = new Scanner(System.in); 
         System.out.println("Which file would you like to read?");
         String location =reader.nextLine();
-        checkFraud(countArray,location);
+        File file = new File(location);
+
+        checkFraud(countArray,file);
+        finalPercent(countArray, appearingNum);
 
         
 
@@ -43,20 +48,19 @@ public class testing2 extends Application{
    
     }
   
-    public static void checkFraud(double [] countArray, String file){
+    public static void checkFraud(double [] countArray, File file) throws FileNotFoundException{
         // Scanner reader = new Scanner(System.in);
        //this scanner is names scan and it stores the csv file required for the benford calculation
        Scanner scan = new Scanner(file);
        //this array stores the numbers from 1-9 (10 numbers)
        //double[] countArray = new double[10];     
        //initialize the counter of the numbers appearing
-       double appearingNum = 0.0; 
        //while the file has next perform the tasks 
        while (scan.hasNext()) {
-        scan.useDelimiter(",");
+       scan.useDelimiter(",");
 
            //read the next digit but convert the 4th character into an int 
-           int nextNum = Character.getNumericValue(scan.next().charAt(1));            
+           int nextNum = Character.getNumericValue(scan.next().charAt(0));            
             
             //add a counter so it counts the number of times a number appears
            appearingNum++;
@@ -65,8 +69,9 @@ public class testing2 extends Application{
                if(a==nextNum){
                    countArray[a]++;  
                }
-           }    
-       }   
+           } 
+        }   
+       //}   
     }
     
     public static void finalPercent(double [] countArray, double appearingNum) {
@@ -75,7 +80,7 @@ public class testing2 extends Application{
             countArray[i] = countArray[i] * 100.0 / appearingNum;
             int scale = (int) Math.pow(10, 1);
             countArray[i]=(double) Math.round(countArray[i]* scale) / scale;
-            System.out.println(countArray[i]);
+            System.out.println(countArray[i]+"%");
         }
         if(29<countArray[1]&&countArray[1]<32){
             System.out.println("Fraud did not occur");
@@ -125,7 +130,7 @@ public class testing2 extends Application{
 
             // Puts customer's ID number, first name, last name, city, postal code and credit card number into the file 
             for (int i = 1; i<10;i++) {
-                out.println(i + "=" + countArray[i]);
+                out.println(i + "=" + countArray[i] + "%");
             }
             out.flush();
             
