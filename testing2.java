@@ -46,7 +46,7 @@ public class testing2 extends Application{
     public static void checkFraud(double [] countArray, String file){
         // Scanner reader = new Scanner(System.in);
        //this scanner is names scan and it stores the csv file required for the benford calculation
-       Scanner scan = new Scanner(new File(file));
+       Scanner scan = new Scanner(file);
        //this array stores the numbers from 1-9 (10 numbers)
        //double[] countArray = new double[10];     
        //initialize the counter of the numbers appearing
@@ -56,7 +56,7 @@ public class testing2 extends Application{
         scan.useDelimiter(",");
 
            //read the next digit but convert the 4th character into an int 
-           int nextNum = Character.getNumericValue(scan.next().charAt(0));            
+           int nextNum = Character.getNumericValue(scan.next().charAt(1));            
             
             //add a counter so it counts the number of times a number appears
            appearingNum++;
@@ -88,33 +88,33 @@ public class testing2 extends Application{
     
     public void start(Stage stage) throws Exception {
         System.out.println(option);
-        if (option == 2) {
-            stage.setTitle("bar graph");
-            final CategoryAxis xAxis = new CategoryAxis();
-            final NumberAxis yAxis = new NumberAxis();
-            final BarChart<String,Number> bc = 
-            new BarChart<String,Number>(xAxis,yAxis);
-            bc.setTitle("Benford's Law Distribution First Digit");
-            xAxis.setLabel("digit");       
-            yAxis.setLabel("percent");
+        
+        stage.setTitle("bar graph");
+        final CategoryAxis xAxis = new CategoryAxis();
+        final NumberAxis yAxis = new NumberAxis();
+        final BarChart<String,Number> bc = 
+        new BarChart<String,Number>(xAxis,yAxis);
+        bc.setTitle("Benford's Law Distribution First Digit");
+        xAxis.setLabel("digit");       
+        yAxis.setLabel("percent");
 
-            XYChart.Series series1 = new XYChart.Series();
-            series1.setName("digit frequency");       
-            series1.getData().add(new XYChart.Data(one,countArray[1]));
-            series1.getData().add(new XYChart.Data(two,countArray[2]));
-            series1.getData().add(new XYChart.Data(three,countArray[3]));
-            series1.getData().add(new XYChart.Data(four,countArray[4]));
-            series1.getData().add(new XYChart.Data(five,countArray[5]));
-            series1.getData().add(new XYChart.Data(six,countArray[6]));
-            series1.getData().add(new XYChart.Data(seven,countArray[7]));
-            series1.getData().add(new XYChart.Data(eight,countArray[8]));
-            series1.getData().add(new XYChart.Data(nine,countArray[9]));
+        XYChart.Series series1 = new XYChart.Series();
+        series1.setName("digit frequency");       
+        series1.getData().add(new XYChart.Data(one,countArray[1]));
+        series1.getData().add(new XYChart.Data(two,countArray[2]));
+        series1.getData().add(new XYChart.Data(three,countArray[3]));
+        series1.getData().add(new XYChart.Data(four,countArray[4]));
+        series1.getData().add(new XYChart.Data(five,countArray[5]));
+        series1.getData().add(new XYChart.Data(six,countArray[6]));
+        series1.getData().add(new XYChart.Data(seven,countArray[7]));
+        series1.getData().add(new XYChart.Data(eight,countArray[8]));
+        series1.getData().add(new XYChart.Data(nine,countArray[9]));
 
-            Scene scene  = new Scene(bc,800,600);
-            bc.getData().addAll(series1);
-            stage.setScene(scene);
-            stage.show();  
-        }      
+        Scene scene  = new Scene(bc,800,600);
+        bc.getData().addAll(series1);
+        stage.setScene(scene);
+        stage.show();  
+              
     }
 
     public static void Results (double [] countArray) {
