@@ -22,7 +22,7 @@ public class testing2 extends Application{
     String seven = "7";
     String eight = "8";
     String nine = "9";
-    int option = 0;
+    String option = "";
     public static void main(String[] args) {
         launch(args);
         
@@ -30,8 +30,8 @@ public class testing2 extends Application{
     @Override 
     public void init() throws FileNotFoundException { 
         Scanner reader = new Scanner(System.in);
-        System.out.println("would you like to read file (1) or check for fraud(2)");
-        option = reader.nextInt();
+        System.out.println("would you like to check the fraud?");
+        option = reader.nextLine();
 
         
        // Scanner reader = new Scanner(System.in);
@@ -56,23 +56,20 @@ public class testing2 extends Application{
             }    
         }
         //display the method that contains the final percentages
-        if (option == 1) {
+        
+        if (option.equals("yes")) {
             loadSalesData();
-        }
-        if (option == 2) {
             finalPercent(countArray,appearingNum); 
             Results(countArray);
         }
     }
     public static void loadSalesData() {
         Scanner reader = new Scanner(System.in); 
-        System.out.println("Would you like to read the file");
-        String answer=reader.nextLine();
-        String location = "/Users/lakysha/Downloads/sales.csv";
-        if(answer.equals("yes")){
-            System.out.println("The file is located in " + location);
-        }
+        System.out.println("Which file would you like to read?");
+        String location =reader.nextLine();
+        File file = new File(location);
     }
+    
     public static void finalPercent(double [] countArray, double appearingNum) {
         // this for loop will print out the frequency of every number from 1-9
         for (int i = 1; i<=9; i++){
