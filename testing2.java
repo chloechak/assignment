@@ -78,13 +78,14 @@ public class testing2 extends Application{
         for (int i = 1; i<=9; i++){
             //the countArray will equal the percentage of the frequency of each number (1-9)
             countArray[i] = countArray[i] * 100.0 / appearingNum;
+            // 10 to the power of 1 (for one decimal place)
             int scale = (int) Math.pow(10, 1);
-            //this function is used to round the number to 1 decimal place
+            // elements in the array is multiplied by 10 to the power of 1, rounded and then divided by 10 to the power of 1 
             countArray[i]=(double) Math.round(countArray[i]* scale) / scale;
             System.out.println(countArray[i]+"%");
         }
         if(29<countArray[1]&&countArray[1]<32){
-            System.out.println("Fraud did not occur");
+            System.out.println("Fraud likely did not occur");
         }
         else{
             System.out.println("Fraud did occur");
@@ -119,7 +120,7 @@ public class testing2 extends Application{
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("digit frequency");       
         // These are for each bar 
-                                         // (x, data for the bar)
+                                         // (x, data to determine the height of the  bar)
         series1.getData().add(new XYChart.Data(one,countArray[1]));
         series1.getData().add(new XYChart.Data(two,countArray[2]));
         series1.getData().add(new XYChart.Data(three,countArray[3]));
