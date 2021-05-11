@@ -42,9 +42,12 @@ public class testing2 extends Application{
         
    
     }
-  /* @param- The paramters of this method includes the countArray(that stores the frequencies) and the file that the user inputted
-     Description- This method will calculate the frequencies of each number (1-9). The method will also count every number of the file so the finl percentages can be displayed
-  */
+    /**
+     * Lakysha
+     * 
+     * @param- The parameters of this method includes the countArray(that stores the frequencies) and the file that the user inputted
+     * Description- This method will calculate the frequencies of each number (1-9). The method will also count every number of the file so the finl percentages can be displayed
+     */
     public static void checkFraud(double [] countArray, File file) throws FileNotFoundException{
        //this scanner is names scan and it stores the user inputted  file required for the benford calculation
        Scanner scan = new Scanner(file);
@@ -70,10 +73,14 @@ public class testing2 extends Application{
         }   
        //}   
     }
-    /*
-    @param- The parameters are the array that stores the frequency of the numbers and the counter that counts the number of numbers in the file
-    description- This method will display the percentages of the first digit of each number. The method will also tell the user whether fraud has occured or not
+    /** 
+     * Lakysha
+     * 
+     *  @param- The parameters are the array that stores the frequency of the numbers and the counter that counts the number of numbers in the file
+     *  @param scale = creates integer 10 to the power of 2 so that the percents can round to one decimal place
+     * description- This method will display the percentages of the first digit of each number. The method will also tell the user whether fraud has occured or not
     */
+    
     public static void finalPercent(double [] countArray, double appearingNum) {
         // this for loop will print out the frequency of every number from 1-9
         for (int i = 1; i<=9; i++){
@@ -96,10 +103,15 @@ public class testing2 extends Application{
             System.out.println("Fraud did occur");
         }
     }
-    
-    // start method to create visual
+    /**
+     * Chloe 
+     * 
+     * Descripion: start method that creates the visual (bar graph)
+     * @param one to nine - for the xaxis labels 
+     */
+
     public void start(Stage stage) throws Exception {
-        // sections for x axis
+        // The xaxis sections only works with strings so I couldn't put an array 
         String one = "1";
         String two = "2";
         String three = "3";
@@ -144,6 +156,12 @@ public class testing2 extends Application{
               
     }
 
+    /**
+     * Chloe 
+     * Description: prints legend into the results.csv 
+     * 
+     * @param 
+     */
     public static void Results (double [] countArray) {
         try {
             // data will be put in results.csv
