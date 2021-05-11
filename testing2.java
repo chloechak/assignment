@@ -10,27 +10,20 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
 
 public class testing2 extends Application{ 
     //create the array with 10 indexes for 9 digits 
-    double[] countArray = new double[10];     
-    String one = "1";
-    String two = "2";
-    String three = "3";
-    String four = "4";
-    String five = "5";
-    String six = "6";
-    String seven = "7";
-    String eight = "8";
-    String nine = "9";
-    String option = "";
+    static double[] countArray = new double[10];     
     static double appearingNum = 0.0; 
 
+    // this main is only used to launch the javaFX visual made
     public static void main(String[] args) {
         launch(args);
         
     }
     @Override 
+    // init is javaFX's main 
     public void init() throws FileNotFoundException { 
         //scanner will allow the user to input 
         Scanner reader = new Scanner(System.in); 
@@ -45,6 +38,7 @@ public class testing2 extends Application{
         checkFraud(countArray,file);
         //benford law percentages will be displayed through this method
         finalPercent(countArray, appearingNum);
+        Results(countArray);
         
    
     }
@@ -97,21 +91,35 @@ public class testing2 extends Application{
         }
     }
     
-    
+    // start method to create visual
     public void start(Stage stage) throws Exception {
-        System.out.println(option);
-        
+        // sections for x axis
+        String one = "1";
+        String two = "2";
+        String three = "3";
+        String four = "4";
+        String five = "5";
+        String six = "6";
+        String seven = "7";
+        String eight = "8";
+        String nine = "9";
+        // title of stage 
         stage.setTitle("bar graph");
         final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
         final BarChart<String,Number> bc = 
         new BarChart<String,Number>(xAxis,yAxis);
+        // title of bar graph
         bc.setTitle("Benford's Law Distribution First Digit");
-        xAxis.setLabel("digit");       
+        // x axis label
+        xAxis.setLabel("digit");  
+        // y axis label     
         yAxis.setLabel("percent");
 
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("digit frequency");       
+        // These are for each bar 
+                                         // (x, data for the bar)
         series1.getData().add(new XYChart.Data(one,countArray[1]));
         series1.getData().add(new XYChart.Data(two,countArray[2]));
         series1.getData().add(new XYChart.Data(three,countArray[3]));
@@ -122,6 +130,7 @@ public class testing2 extends Application{
         series1.getData().add(new XYChart.Data(eight,countArray[8]));
         series1.getData().add(new XYChart.Data(nine,countArray[9]));
 
+        // scene scale
         Scene scene  = new Scene(bc,800,600);
         bc.getData().addAll(series1);
         stage.setScene(scene);
@@ -131,12 +140,14 @@ public class testing2 extends Application{
 
     public static void Results (double [] countArray) {
         try {
-            
+            // data will be put in results.csv
+            // true prevents it from being overwritten
             FileWriter outFile = new FileWriter ("results.csv", true);
+            // Tells program to print in results.csv
             PrintWriter out = new PrintWriter(outFile);
 
-            // Puts customer's ID number, first name, last name, city, postal code and credit card number into the file 
-            for (int i = 1; i<10;i++) {
+            // Puts digit frequency into the file 
+            for (int i = 1;i < 10;i++) {
                 out.println(i + "=" + countArray[i] + "%");
             }
             out.flush();
