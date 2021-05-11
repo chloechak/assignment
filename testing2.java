@@ -63,6 +63,7 @@ public class testing2 extends Application{
            for(int a=1; a<10; a++){
                //if a equals the first digit of an number update the frequency
                if(a==nextNum){
+                   //going through the array, if a is equal to the first number add 1 to its frequency
                    countArray[a]++;  
                }
            } 
@@ -82,11 +83,15 @@ public class testing2 extends Application{
             int scale = (int) Math.pow(10, 1);
             // elements in the array is multiplied by 10 to the power of 1, rounded and then divided by 10 to the power of 1 
             countArray[i]=(double) Math.round(countArray[i]* scale) / scale;
+            //print out the first digit frequencies with a percentage sign at the end
             System.out.println(countArray[i]+"%");
         }
+        //if the digit "1" is less than 32 and greater than 29 do the task
         if(29<countArray[1]&&countArray[1]<32){
+            //if the statement is true output that fraud didnt occur
             System.out.println("Fraud likely did not occur");
         }
+        //if the statement is flase output fraud did occur
         else{
             System.out.println("Fraud did occur");
         }
