@@ -34,38 +34,40 @@ public class testing2 extends Application{
     public void init() throws FileNotFoundException { 
         //scanner will allow the user to input 
         Scanner reader = new Scanner(System.in); 
+        //the program asks the user to input the file they would like to read
         System.out.println("Which file would you like to read?");
+        //take the input as string
         String location =reader.nextLine();
+        //convert the string into a file
         File file = new File(location);
 
+        //the method that checks for fraud is placed here in the main so the user could check for fraud
         checkFraud(countArray,file);
+        //benford law percentages will be displayed through this method
         finalPercent(countArray, appearingNum);
-
-        
-
-        //display the method that contains the final percentages
         
    
     }
-  
+  /* @param- The paramters of this method includes the countArray(that stores the frequencies) and the file that the user inputted
+     Description- This method will calculate the frequencies of each number (1-9). The method will also count every number of the file so the finl percentages can be displayed
+  */
     public static void checkFraud(double [] countArray, File file) throws FileNotFoundException{
-        // Scanner reader = new Scanner(System.in);
-       //this scanner is names scan and it stores the csv file required for the benford calculation
+       //this scanner is names scan and it stores the user inputted  file required for the benford calculation
        Scanner scan = new Scanner(file);
-       //this array stores the numbers from 1-9 (10 numbers)
-       //double[] countArray = new double[10];     
-       //initialize the counter of the numbers appearing
-       //while the file has next perform the tasks 
+     
+       //while the file has the next line read it and do the calculations 
        while (scan.hasNext()) {
+    //this delimeter will allow the file to be read after the comma on each line
        scan.useDelimiter(",");
 
-           //read the next digit but convert the 4th character into an int 
+           //read the next number but convert the char into an int 
            int nextNum = Character.getNumericValue(scan.next().charAt(0));            
             
             //add a counter so it counts the number of times a number appears
            appearingNum++;
            // this counter will update the frequency of a number in its array  
            for(int a=1; a<10; a++){
+               //if a equals the first digit of an number update the frequency
                if(a==nextNum){
                    countArray[a]++;  
                }
@@ -73,12 +75,17 @@ public class testing2 extends Application{
         }   
        //}   
     }
-    
+    /*
+    @param- The parameters are the array that stores the frequency of the numbers and the counter that counts the number of numbers in the file
+    description- This method will display the percentages of the first digit of each number. The method will also tell the user whether fraud has occured or not
+    */
     public static void finalPercent(double [] countArray, double appearingNum) {
         // this for loop will print out the frequency of every number from 1-9
         for (int i = 1; i<=9; i++){
+            //the countArray will equal the percentage of the frequency of each number (1-9)
             countArray[i] = countArray[i] * 100.0 / appearingNum;
             int scale = (int) Math.pow(10, 1);
+            //this function is used to round the number to 1 decimal place
             countArray[i]=(double) Math.round(countArray[i]* scale) / scale;
             System.out.println(countArray[i]+"%");
         }
