@@ -17,7 +17,7 @@ public class testing2 extends Application{
     static double[] countArray = new double[10];     
     static double appearingNum = 0.0; 
 
-    // this main is only used to launch the javaFX visual made
+    // this main is only used to launch the javaFX bar graph made
     public static void main(String[] args) {
         launch(args);
         
@@ -106,8 +106,8 @@ public class testing2 extends Application{
     /**
      * Chloe 
      * 
-     * Descripion: start method that creates the visual (bar graph)
-     * @param one to nine - for the xaxis labels 
+     * Descripion: javaFX start method that sets the scene and stages the visual (bar graph) using the percents given from method finalPecent
+     * @param - creates the xaxis sections for the different first digit frequencies 
      */
 
     public void start(Stage stage) throws Exception {
@@ -137,7 +137,7 @@ public class testing2 extends Application{
         XYChart.Series series1 = new XYChart.Series();
         series1.setName("digit frequency");       
         // These are for each bar 
-                                         // (x, data to determine the height of the  bar)
+                                         // (x, data to determine the height of the bar)
         series1.getData().add(new XYChart.Data(one,countArray[1]));
         series1.getData().add(new XYChart.Data(two,countArray[2]));
         series1.getData().add(new XYChart.Data(three,countArray[3]));
@@ -148,7 +148,7 @@ public class testing2 extends Application{
         series1.getData().add(new XYChart.Data(eight,countArray[8]));
         series1.getData().add(new XYChart.Data(nine,countArray[9]));
 
-        // scene scale
+        // scene scale (how big the bar graph is)
         Scene scene  = new Scene(bc,800,600);
         bc.getData().addAll(series1);
         stage.setScene(scene);
@@ -158,9 +158,9 @@ public class testing2 extends Application{
 
     /**
      * Chloe 
-     * Description: prints legend into the results.csv 
      * 
-     * @param 
+     * Description: this method prints the legend of the first digit frequency bar graph into the results.csv 
+     * @param - chooses file and writes in it 
      */
     public static void Results (double [] countArray) {
         try {
@@ -170,12 +170,13 @@ public class testing2 extends Application{
             // Tells program to print in results.csv
             PrintWriter out = new PrintWriter(outFile);
 
-            // Puts digit frequency into the file 
+            // Puts each digit frequency from the array into the file 
             for (int i = 1;i < 10;i++) {
                 out.println(i + "=" + countArray[i] + "%");
             }
             out.flush();
             
+            // prints done when legend is printed into the results.csv
             System.out.println("Done");
             
             // closes the PrintWriter
