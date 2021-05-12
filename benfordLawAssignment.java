@@ -63,6 +63,7 @@ public class benfordLawAssignment extends Application{
         checkFraud(countArray,file);
         //benford law percentages will be displayed through this method
         finalPercent(countArray, appearingNum);
+        fraud(countArray);
         // method that puts legend into resuls.csv
         Results(countArray);
         
@@ -121,15 +122,22 @@ public class benfordLawAssignment extends Application{
             //print out the first digit frequencies with a percentage sign at the end
             System.out.println(countArray[i]+"%");
         }
+     
+    }
+    /**
+     * @param- The paramaters include the countArray because it will be needed to get the 1st digit of the array
+     * Description: This method will inform the user if fraud did/did not occur after the file goes through benfords law
+     */
+    public static void fraud(double [] countArray){
         //if the digit "1" is less than 32 and greater than 29 do the task
         if(29<=countArray[1]&&countArray[1]<=32){
-            //if the statement is true output that fraud didnt occur
+        //if the statement is true output that fraud didnt occur
             System.out.println("Fraud likely did not occur");
         }
-        //if the statement is flase output fraud did occur
+       //if the statement is false output fraud did occur
         else{
             System.out.println("Fraud did occur");
-        }
+            }
     }
     /**
      * Chloe 
