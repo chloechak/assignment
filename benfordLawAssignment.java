@@ -1,9 +1,9 @@
-/*
-Name: Chloe and Lakysha
-Date: May 5 2021
-Teacher: Mr.Ho
-Description: This program will take in a csv file from the user and output benfords law. The percentage of the each first digit frequency will be outputted in the terminal as well as in the graph.
-A file called results.csv will store the benford law percentages, for the user to access after.
+/**
+* Name: Chloe and Lakysha
+* Date: May 5 2021
+* Teacher: Mr.Ho
+* Description: This program will take in a csv file from the user and output benfords law. The percentage of the each first digit frequency will be outputted in the terminal as well as in the graph.
+* A file called results.csv will store the benford law percentages, for the user to access after.
 */
 //import all needed packages to run the program
 import java.io.File;
@@ -60,11 +60,11 @@ public class benfordLawAssignment extends Application{
         File file = new File(location);
 
         //the method that checks for fraud is placed here in the main so the user could check for fraud
-        checkFraud(countArray,file);
+        countFrequency(countArray,file);
         //benford law percentages will be displayed through this method
         finalPercent(countArray, appearingNum);
         fraud(countArray);
-        // method that puts legend into resuls.csv
+        // method that puts legend into results.csv
         Results(countArray);
         
    
@@ -77,7 +77,7 @@ public class benfordLawAssignment extends Application{
      * Description- This method will calculate the frequencies of each number (1-9). The method will also count every number of the file so the finl percentages can be displayed
      *
      */
-    public static void checkFraud(double [] countArray, File file) throws FileNotFoundException{
+    public static void countFrequency(double [] countArray, File file) throws FileNotFoundException{
        //this scanner is names scan and it stores the user inputted  file required for the benford calculation
        Scanner scan = new Scanner(file);
      
