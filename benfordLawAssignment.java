@@ -122,7 +122,7 @@ public class benfordLawAssignment extends Application{
             System.out.println(countArray[i]+"%");
         }
         //if the digit "1" is less than 32 and greater than 29 do the task
-        if(29<countArray[1]&&countArray[1]<32){
+        if(29<=countArray[1]&&countArray[1]<=32){
             //if the statement is true output that fraud didnt occur
             System.out.println("Fraud likely did not occur");
         }
@@ -140,16 +140,6 @@ public class benfordLawAssignment extends Application{
      */
 
     public void start(Stage stage) throws Exception {
-        // The xaxis sections only works with strings so I couldn't put an array 
-        String one = "1";
-        String two = "2";
-        String three = "3";
-        String four = "4";
-        String five = "5";
-        String six = "6";
-        String seven = "7";
-        String eight = "8";
-        String nine = "9";
         // title of stage 
         stage.setTitle("bar graph");
         final CategoryAxis xAxis = new CategoryAxis();
@@ -169,15 +159,15 @@ public class benfordLawAssignment extends Application{
         series1.setName("digit frequency");       
         // These are for each bar 
                                          // (x, data to determine the height of the bar)
-        series1.getData().add(new XYChart.Data(one,countArray[1]));
-        series1.getData().add(new XYChart.Data(two,countArray[2]));
-        series1.getData().add(new XYChart.Data(three,countArray[3]));
-        series1.getData().add(new XYChart.Data(four,countArray[4]));
-        series1.getData().add(new XYChart.Data(five,countArray[5]));
-        series1.getData().add(new XYChart.Data(six,countArray[6]));
-        series1.getData().add(new XYChart.Data(seven,countArray[7]));
-        series1.getData().add(new XYChart.Data(eight,countArray[8]));
-        series1.getData().add(new XYChart.Data(nine,countArray[9]));
+        series1.getData().add(new XYChart.Data("1",countArray[1]));
+        series1.getData().add(new XYChart.Data("2",countArray[2]));
+        series1.getData().add(new XYChart.Data("3",countArray[3]));
+        series1.getData().add(new XYChart.Data("4",countArray[4]));
+        series1.getData().add(new XYChart.Data("5",countArray[5]));
+        series1.getData().add(new XYChart.Data("6",countArray[6]));
+        series1.getData().add(new XYChart.Data("7",countArray[7]));
+        series1.getData().add(new XYChart.Data("8",countArray[8]));
+        series1.getData().add(new XYChart.Data("9",countArray[9]));
 
         // scene scale (how big the bar graph is)
         Scene scene  = new Scene(bc,800,600);
