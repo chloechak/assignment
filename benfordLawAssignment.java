@@ -1,11 +1,11 @@
 /*
 Name: Chloe and Lakysha
-Date: May 12 2021
-Teacher:Mr.Ho
+Date: May 5 2021
+Teacher: Mr.Ho
 Description: This program will take in a csv file from the user and output benfords law. The percentage of the each first digit frequency will be outputted in the terminal as well as in the graph.
 A file called results.csv will store the benford law percentages, for the user to access after.
 */
-//import all needed packages to run the progra
+//import all needed packages to run the program
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -20,9 +20,12 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 /**
+ * Chloe and Lakysha
  * 
+ * Description: This class contains the needed program with all methods to run benfords law, the graph, and the results.csv file. 
+ *              extends Application allows javaFX to work in the code 
  */
-public class testing2 extends Application{ 
+public class benfordLawAssignment extends Application{ 
     //create the array with 10 indexes for 9 digits 
     static double[] countArray = new double[10]; 
     // Initialiize counter    
@@ -42,6 +45,7 @@ public class testing2 extends Application{
      * 
      * description: init is the main for javaFX, all methods go in here and leaves the public static void main empty so that it is able to launch the bar graph
      * @param - the parameters allows user to choose the file they want to be readed and used in this program
+     * @throws - allows init to read file 
      */
     @Override
     // init is javaFX's main 
@@ -78,7 +82,7 @@ public class testing2 extends Application{
      
        //while the file has the next line read it and do the calculations 
        while (scan.hasNext()) {
-    //this delimeter will allow the file to be read after the comma on each line
+        //this delimeter will allow the file to be read after the comma on each line
        scan.useDelimiter(",");
 
            //read the next number but convert the char into an int 
@@ -159,7 +163,7 @@ public class testing2 extends Application{
         // y axis label     
         yAxis.setLabel("percent");
 
-        // series are the bars in one section, in this case there's only one 
+        // series are the number of bars in one section, in this case there's only one 
         XYChart.Series series1 = new XYChart.Series();
         // Legend for the colour of the bar 
         series1.setName("digit frequency");       
