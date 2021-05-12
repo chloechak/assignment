@@ -197,7 +197,7 @@ public class benfordLawAssignment extends Application{
         try {
             // data will be put in results.csv
             // true prevents it from being overwritten
-            FileWriter outFile = new FileWriter ("results.csv", true);
+            FileWriter outFile = new FileWriter ("results.csv");
             // Tells program to print in results.csv
             PrintWriter out = new PrintWriter(outFile);
 
