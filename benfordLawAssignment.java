@@ -143,7 +143,7 @@ public class benfordLawAssignment extends Application{
      * Chloe 
      * 
      * Descripion: javaFX start method that sets the scene and stages the visual (bar graph) using the percents given from method finalPecent
-     * @param - creates the xaxis sections for the different first digit frequencies 
+     * @param - puts the first digit frequency percens into the bar graph
      * @throws - throws exceptions to allow start method to run and create visual
      */
 
