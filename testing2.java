@@ -10,19 +10,32 @@ import javafx.scene.chart.XYChart;
 import javafx.stage.Stage;
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.sql.ResultSet;
 
+/**
+ * 
+ */
 public class testing2 extends Application{ 
     //create the array with 10 indexes for 9 digits 
-    static double[] countArray = new double[10];     
+    static double[] countArray = new double[10]; 
+    // Initialiize counter    
     static double appearingNum = 0.0; 
 
-    // this main is only used to launch the javaFX bar graph made
+    /**
+     * Chloe
+     * 
+     * description: allows the javaFX factor of this program to run and create visual
+     */
     public static void main(String[] args) {
         launch(args);
         
     }
-    @Override 
+    /**
+     * Chloe and Lakysha 
+     * 
+     * description: init is the main for javaFX, all methods go in here and leaves the public static void main empty so that it is able to launch the bar graph
+     * @param - the parameters allows user to choose the file they want to be readed and used in this program
+     */
+    @Override
     // init is javaFX's main 
     public void init() throws FileNotFoundException { 
         //scanner will allow the user to input 
@@ -38,6 +51,7 @@ public class testing2 extends Application{
         checkFraud(countArray,file);
         //benford law percentages will be displayed through this method
         finalPercent(countArray, appearingNum);
+        // method that puts legend into resuls.csv
         Results(countArray);
         
    
@@ -108,6 +122,7 @@ public class testing2 extends Application{
      * 
      * Descripion: javaFX start method that sets the scene and stages the visual (bar graph) using the percents given from method finalPecent
      * @param - creates the xaxis sections for the different first digit frequencies 
+     * @throws - throws exceptions to allow start method to run and create visual
      */
 
     public void start(Stage stage) throws Exception {
@@ -134,7 +149,9 @@ public class testing2 extends Application{
         // y axis label     
         yAxis.setLabel("percent");
 
+        // series are the bars in one section, in this case there's only one 
         XYChart.Series series1 = new XYChart.Series();
+        // Legend for the colour of the bar 
         series1.setName("digit frequency");       
         // These are for each bar 
                                          // (x, data to determine the height of the bar)
@@ -170,7 +187,7 @@ public class testing2 extends Application{
             // Tells program to print in results.csv
             PrintWriter out = new PrintWriter(outFile);
 
-            // Puts each digit frequency from the array into the file 
+            // Puts each digit frequency from the array into the file using for loop
             for (int i = 1;i < 10;i++) {
                 out.println(i + "=" + countArray[i] + "%");
             }
