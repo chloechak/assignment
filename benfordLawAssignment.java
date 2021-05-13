@@ -105,7 +105,7 @@ public class benfordLawAssignment extends Application{
                }
            } 
         }   
-       //}   
+    
     }
     /** 
      * Lakysha
