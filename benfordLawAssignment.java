@@ -20,10 +20,8 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 
 /**
- * Chloe and Lakysha
- * 
- * Description: This class contains the needed program with all methods to run benfords law, the graph, and the results.csv file. 
- *              extends Application allows javaFX to work in the code 
+ * @author - Chloe and Lakysha
+ * @version - 1.0
  */
 public class benfordLawAssignment extends Application{ 
     //create the array with 10 indexes for 9 digits 
@@ -44,9 +42,11 @@ public class benfordLawAssignment extends Application{
      * Chloe and Lakysha 
      * 
      * description: init is the main for javaFX, all methods go in here and leaves the public static void main empty so that it is able to launch the bar graph
-     * @param - the parameters allows user to choose the file they want to be readed and used in this program
-     * @throws - allows init to read file 
+     * @param fileChoice - allows user to input the file they want to be read in this program
+     * @param file - recognizes the the user's input as a file and allows the file to be read 
+     * @throws FileNotFoundException - allows init to read file
      */
+
     @Override
     // init is javaFX's main 
     public void init() throws FileNotFoundException { 
@@ -55,29 +55,34 @@ public class benfordLawAssignment extends Application{
         //the program asks the user to input the file they would like to read
         System.out.println("Which file would you like to read?");
         //take the input as string
-        String location =reader.nextLine();
-        //convert the string into a file
-        File file = new File(location);
+        String fileChoice = reader.nextLine();
+        //takes the file chosen by the user to read 
+        File file = new File(fileChoice);
+
+
 
         //the method that checks for fraud is placed here in the main so the user could check for fraud
-        countFrequency(countArray,file);
+        countFrequency(file);
         //benford law percentages will be displayed through this method
-        finalPercent(countArray, appearingNum);
-        fraud(countArray);
+        finalPercent();
+        // checks for fraud 
+        fraud();
         // method that puts legend into results.csv
-        Results(countArray);
+        Results();
         
    
     }
    /**
      * Lakysha
      * 
-     * @param- The parameters of this method includes the countArray(that stores the frequencies) and the file that the user inputted
-     * @throws- the file not found exception is used to sucessfully run the method and terminate it if the exception occurs
-     * Description- This method will calculate the frequencies of each number (1-9). The method will also count every number of the file so the finl percentages can be displayed
-     *
+     * Description- This method will calculate the frequencies of each first digit (1-9). The method will also count every sale of the file so the final percentages can be displayed
+     * 
+     * @param appearingNum - counts the total number of sales in the file
+     * @param countArray - counts the number of time the numbers (1-9) appear as first digits for the sales 
+     * @param file - allows the data from the file to be used 
+     * @throws FileNotFoundException - the file not found exception is used to sucessfully run the method and terminate it if the exception occurs
      */
-    public static void countFrequency(double [] countArray, File file) throws FileNotFoundException{
+    public static void countFrequency(File file) throws FileNotFoundException{
        //this scanner is names scan and it stores the user inputted  file required for the benford calculation
        Scanner scan = new Scanner(file);
      
@@ -105,12 +110,13 @@ public class benfordLawAssignment extends Application{
     /** 
      * Lakysha
      * 
-     *  @param- The parameters are the array that stores the frequency of the numbers and the counter that counts the number of numbers in the file
-     *  @param scale = creates integer 10 to the power of 2 so that the percents can round to one decimal place
      * description- This method will display the percentages of the first digit of each number. The method will also tell the user whether fraud has occured or not
+     * 
+     * @param countArray - used to find the percentage of the first digit frequency of numbers (1-9)
+     * @param appearingNum - stored the total number of sales which is used to find the digit frequency percentage of each number 
     */
     
-    public static void finalPercent(double [] countArray, double appearingNum) {
+    public static void finalPercent() {
         // this for loop will print out the frequency of every number from 1-9
         for (int i = 1; i<=9; i++){
             //the countArray will equal the percentage of the frequency of each number (1-9)
@@ -125,10 +131,13 @@ public class benfordLawAssignment extends Application{
      
     }
     /**
-     * @param- The paramaters include the countArray because it will be needed to get the 1st digit of the array
+     * Lakysha 
+     * 
      * Description: This method will inform the user if fraud did/did not occur after the file goes through benfords law
+     * 
+     * @param countArray - perentage of the first digit frequency of the number 1 is needed to check for fraud 
      */
-    public static void fraud(double [] countArray){
+    public static void fraud(){
         //if the digit "1" is less than 32 and greater than 29 do the task
         if(29<=countArray[1]&&countArray[1]<=32){
         //if the statement is true output that fraud didnt occur
@@ -138,13 +147,13 @@ public class benfordLawAssignment extends Application{
         else{
             System.out.println("Fraud did occur");
             }
-    }
+        }
     /**
      * Chloe 
      * 
      * Descripion: javaFX start method that sets the scene and stages the visual (bar graph) using the percents given from method finalPecent
-     * @param - puts the first digit frequency percens into the bar graph
-     * @throws - throws exceptions to allow start method to run and create visual
+     * @param countArray - puts the first digit frequency percentages into the bar graph
+     * @throws Exception - throws exceptions to allow start method to run and create visual
      */
 
     public void start(Stage stage) throws Exception {
@@ -189,12 +198,11 @@ public class benfordLawAssignment extends Application{
      * Chloe 
      * 
      * Description: this method prints the legend of the first digit frequency bar graph into the results.csv 
-     * @param - chooses file and writes in it 
+     * @param countArray - the percentages of the first digit frequencies are needed to input into the legend
      */
-    public static void Results (double [] countArray) {
+    public static void Results () {
         try {
             // data will be put in results.csv
-            // true prevents it from being overwritten
             FileWriter outFile = new FileWriter ("results.csv");
             // Tells program to print in results.csv
             PrintWriter out = new PrintWriter(outFile);
